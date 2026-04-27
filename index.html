@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>with(in) — hyperSense Showcase, Spring 2026</title>
+<title>hyperSense: Augmenting Human Experience in Environments — Showcase, Spring 2026</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,7 +13,7 @@
   :root {
     /* light type for use over the teal sky / hero */
     --ink: #fbf3e6;
-    --ink-soft: rgba(251, 243, 230, 0.78);
+    --ink-soft: rgba(251, 243, 230, 0.9);
     --paper: #fbf3e6;
     --line: rgba(251, 243, 230, 0.28);
 
@@ -91,7 +91,7 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--ink);
+    background: var(--ink-soft);
     vertical-align: middle;
     margin-right: 8px;
   }
@@ -132,20 +132,9 @@
   .hero-arrow {
     width: 64px;
     height: 1px;
-    background: var(--ink);
+    background: var(--line);
     position: relative;
     margin-top: 20px;
-  }
-  .hero-arrow::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: -4px;
-    width: 8px;
-    height: 8px;
-    border-left: 1px solid var(--ink);
-    border-bottom: 1px solid var(--ink);
-    transform: rotate(45deg);
   }
 
   .title-block {
@@ -161,8 +150,8 @@
   .title {
     font-family: var(--serif);
     font-weight: 400;
-    font-size: clamp(96px, 16vw, 240px);
-    line-height: 0.88;
+    font-size: clamp(36px, 4.5vw, 64px);
+    line-height: 1.1;
     letter-spacing: -0.02em;
     color: var(--ink);
     font-feature-settings: "ss01" 1;
@@ -355,9 +344,6 @@
     gap: 60px;
     align-items: start;
   }
-  .project:last-child {
-    border-bottom: 1px solid var(--line);
-  }
   .project .num {
     font-family: var(--serif);
     font-style: italic;
@@ -401,7 +387,7 @@
     grid-template-columns: 1fr;
   }
   .img-placeholder {
-    aspect-ratio: 4/5;
+    aspect-ratio: 16/9;
     border: 1px solid var(--line);
     background:
       repeating-linear-gradient(135deg,
@@ -422,6 +408,12 @@
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--ink-soft);
+  }
+  .project-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
   }
   .project.wip .text h4 {
     color: var(--ink-soft);
@@ -513,8 +505,7 @@
 <!-- ---------- top bar ---------- -->
 <header class="topbar">
   <div class="left">
-    <span class="mark"><em>with(in)</em></span>
-    <span class="micro" style="margin-left:12px;">— Spring 2026</span>
+    <span class="micro">51-361 / 861 — hyperSense · Spring 2026</span>
   </div>
   <div class="right">
     <span class="micro"><span class="dot"></span>Carnegie Mellon · School of Design</span>
@@ -526,134 +517,88 @@
   <div class="left-col">
     <div class="lecturers">
       <span class="label">Faculty</span>
-      Dina El-Zanfaly &amp; Marysol Ortega Pallanez
-      <span class="label" style="margin-top:14px;">Course</span>
-      51-361 / 861 — hyperSense:<br />Augmenting Human Experience
+      Dina El-Zanfaly
+      <span class="label" style="margin-top:14px;">Teaching Assistant</span>
+      Cheyu Tu
       <div class="hero-arrow"></div>
     </div>
 
     <div class="title-block">
-      <span class="micro eyebrow">An invitation · A showcase</span>
-      <h1 class="title">with<span class="paren">(</span><span class="in">in</span><span class="paren">)</span></h1>
-      <p class="subtitle">Introspection &amp; collective reflection.</p>
-      <p class="subtitle-2">CMU 51-361/861 hyperSense: Augmenting Human Experience — Showcase, Spring 2026. A set of activities, conversations &amp; games that reflect on the nature of design process.</p>
+      <h1 class="title">51-361/861<br/><em>hyperSense:</em> Augmenting human experience in Environments</em></h1>
     </div>
   </div>
 
   <div class="right-col">
-    <div class="vert-date">11 / 30</div>
+    <div class="vert-date">04 / 27</div>
 
     <div class="meta-block">
       <div class="meta-row">
         <span class="k">Date</span>
-        <span class="v">November 30, 2021</span>
+        <span class="v">Tuesday, April 27, 2026</span>
       </div>
       <div class="meta-row">
         <span class="k">Time</span>
-        <span class="v">11:00 AM — 12:30 PM</span>
+        <span class="v">3:15 PM — 4:45 PM</span>
       </div>
       <div class="meta-row">
         <span class="k">Location</span>
-        <span class="v">School of Design, CMU</span>
+        <span class="v">MMH 127<br/>Spatial Experiences Lab</span>
       </div>
-      <a class="rsvp" href="#" aria-label="RSVP">
-        RSVP here
-        <span class="arrow">→</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ---------- intro ---------- -->
-<section class="intro">
-  <div class="intro-grid">
-    <div class="label-col">
-      <span class="micro">§ 01 — An invitation</span>
-      <h2>Inquiry,<br/>introspection,<br/>&amp; sharing.</h2>
-    </div>
-    <div class="prose-col">
-      <p><em>With(in)</em> is the culmination of the Seminar in Design Theory &amp; Practice — taught by Dina El-Zanfaly &amp; Marysol Ortega Pallanez for PhD and MDes students at Carnegie Mellon's School of Design.</p>
-      <p>We invite you to engage in a set of activities, conversations &amp; games that reflect on the nature of a design process rooted in inquiry, introspection &amp; sharing.</p>
     </div>
   </div>
 </section>
 
 <!-- ---------- projects ---------- -->
-<div class="section-head">
-  <h3>Five projects.</h3>
-  <span class="count">§ 02 — On view</span>
-</div>
-
 <section class="projects">
 
   <!-- Project 1 -->
-  <article class="project">
+  <article class="project single">
     <div class="num">i.</div>
     <div class="text">
       <h4>Proximity <em>Garden</em></h4>
-      <p>Proximity Garden is an interactive floor projection system that fosters connection between strangers through playful, embodied interaction. Using real‑time body tracking, the system detects interpersonal proximity and responds — lotus flowers blooming around people's feet.</p>
-      <div class="author">— Sujin</div>
+      <p>Proximity Garden is an interactive floor projection system that fosters connection between strangers through playful, embodied interaction. Using real-time body tracking, the system detects interpersonal proximity and responds by lotus flowers blooming around people's feet.</p>
     </div>
     <div class="images">
-      <div class="img-placeholder"><span>Floor projection<br/>— stills</span></div>
-      <div class="img-placeholder"><span>Bloom detail<br/>— close‑up</span></div>
+      <img class="project-img" src="assets/Proximity Garden.png" alt="Proximity Garden — floor projection" />
     </div>
   </article>
 
   <!-- Project 2 -->
-  <article class="project">
+  <article class="project single">
     <div class="num">ii.</div>
     <div class="text">
       <h4>It Takes Two to Make a <em>Squiggle Wiggle</em></h4>
-      <p>A tangible, AI‑assisted drawing experience that brings participants' sketches to life — supporting divergent thinking and social co‑creation in real time, while keeping the human as the dominant creative agent.</p>
-      <p style="font-size:14px; margin-top:12px; color:var(--ink-soft);">A human‑centered framing of AI‑assisted creativity, with implications for designing tangible co‑creative systems that preserve authorship and collaborative imagination.</p>
-      <div class="author">— Mary</div>
+      <p>This project investigates a tangible AI drawing experience that supports divergent thinking and social co-creation while keeping the human as the dominant creative agent. We contribute a human-centered framing of AI-assisted creativity and
+outlines implications for designing tangible co-creative systems that preserve authorship and collaborative imagination.</p>
     </div>
     <div class="images">
-      <div class="img-placeholder"><span>Tangible interface<br/>— in use</span></div>
-      <div class="img-placeholder"><span>Co‑drawn output<br/>— sketch</span></div>
+      <img class="project-img" src="assets/It Takes Two.jpg" alt="It Takes Two to Make a Squiggle Wiggle — tangible interface" />
     </div>
   </article>
 
   <!-- Project 3 -->
-  <article class="project wip">
+  <article class="project single">
     <div class="num">iii.</div>
     <div class="text">
-      <span class="wip-pill">Work in progress</span>
-      <h4><em>Untitled</em> — coming soon</h4>
-      <p>A new chapter, still in formation. Details &amp; imagery will arrive shortly before the showcase.</p>
-      <div class="author">— Erica</div>
+      <h4><em>Zora</em></h4>
+      <p>Zora is a smart scent diffuser that creates personalized olfactory environments through natural language voice or text input.</p>
+      <p style="margin-top:12px;">Users describe a desired feeling, vibe, or memory, and Zora interprets the prompt, factors in personal scent associations, and cross-references available cartridges to generate a custom blend while adjusting timing and intensity automatically. By learning about each individual's unique scent associations, it delivers experiences that feel personal and emotionally resonant. Zora reduces the cognitive load of scent selection and creates a guided experience for relaxation and wellbeing.</p>
     </div>
-    <div class="images single">
-      <div class="img-placeholder"><span>Image to come</span></div>
+    <div class="images">
+      <img class="project-img" src="assets/Zora.jpg" alt="Zora — smart scent diffuser" />
     </div>
   </article>
 
   <!-- Project 4 -->
-  <article class="project wip">
+  <article class="project single">
     <div class="num">iv.</div>
     <div class="text">
-      <span class="wip-pill">Work in progress</span>
-      <h4><em>Untitled</em> — coming soon</h4>
-      <p>A new chapter, still in formation. Details &amp; imagery will arrive shortly before the showcase.</p>
-      <div class="author">— Evan</div>
+      <h4>Peter Pan, <em>Where Did the Shadow Go?</em></h4>
+      <p>Peter Pan is a screenless generative AI interactive system that explores new possibilities for human‑AI interaction within physical spaces. Powered by spatial sensing and semantic reasoning, the AI interprets spatial configurations and human behaviors, then manifests itself through projected shadows in the environment.</p>
+      <p style="margin-top:12px;">Users engage in spatial negotiation with the agent by rearranging objects or through bodily intervention, creating a dynamic bi‑directional collaboration beyond one‑way command‑response patterns. Peter Pan investigates how context‑aware AI can establish a shared spatial agency grounded in the physical world.</p>
     </div>
-    <div class="images single">
-      <div class="img-placeholder"><span>Image to come</span></div>
-    </div>
-  </article>
-
-  <!-- Project 5 -->
-  <article class="project wip">
-    <div class="num">v.</div>
-    <div class="text">
-      <span class="wip-pill">Work in progress</span>
-      <h4><em>Untitled</em> — coming soon</h4>
-      <p>A new chapter, still in formation. Details &amp; imagery will arrive shortly before the showcase.</p>
-      <div class="author">— James</div>
-    </div>
-    <div class="images single">
-      <div class="img-placeholder"><span>Image to come</span></div>
+    <div class="images">
+      <img class="project-img" src="assets/Peter Pan.jpg" alt="Peter Pan, Where Did the Shadow Go? — projected shadows" />
     </div>
   </article>
 
@@ -662,13 +607,13 @@
 <!-- ---------- footer ---------- -->
 <footer class="footer">
   <div class="footer-inner">
-    <div class="big"><em>See you<br/>with(in).</em></div>
+    <div class="big"><em>See you<br/>there.</em></div>
     <div class="meta">
       Carnegie Mellon University<br/>
       School of Design<br/>
       hyperSense · Spring 2026<br/>
       <br/>
-      <a href="#" style="color:inherit; text-decoration:none; border-bottom:1px solid var(--line);">RSVP →</a>
+      Tuesday, April 27 · MMH 127
     </div>
   </div>
 </footer>
