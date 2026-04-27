@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>with(in) — hyperSense Showcase, Spring 2026</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    /* light type for use over the teal sky / hero */
+    --ink: #fbf3e6;
+    --ink-soft: rgba(251, 243, 230, 0.78);
+    --paper: #fbf3e6;
+    --line: rgba(251, 243, 230, 0.28);
+
+    /* dark type for use over the warm peach band / project area */
+    --ink-dark: #2a1f17;
+    --ink-dark-soft: rgba(42, 31, 23, 0.72);
+    --line-dark: rgba(42, 31, 23, 0.18);
+
+    --serif: "Instrument Serif", "Times New Roman", serif;
+    --sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --mono: "Geist Mono", ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* ---------- background photo — fixed, never scrolls ---------- */
+  .bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  /* ---------- shared structure ---------- */
+  .wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 56px;
+  }
+
+  .micro {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 56px;
+    position: relative;
+    z-index: 2;
+  }
+  .topbar .left,
+  .topbar .right {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+  .topbar .mark {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1;
+  }
+  .dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--ink);
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+
+  /* ---------- hero ---------- */
+  .hero {
+    min-height: calc(100vh - 84px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    padding: 40px 56px 80px;
+    position: relative;
+  }
+
+  .hero .left-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .lecturers {
+    max-width: 280px;
+    line-height: 1.55;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .lecturers .label {
+    display: block;
+    margin-bottom: 6px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .hero-arrow {
+    width: 64px;
+    height: 1px;
+    background: var(--ink);
+    position: relative;
+    margin-top: 20px;
+  }
+  .hero-arrow::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -4px;
+    width: 8px;
+    height: 8px;
+    border-left: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    transform: rotate(45deg);
+  }
+
+  .title-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .eyebrow {
+    margin-bottom: 28px;
+  }
+
+  .title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(96px, 16vw, 240px);
+    line-height: 0.88;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    font-feature-settings: "ss01" 1;
+  }
+  .title .paren {
+    font-style: italic;
+    color: var(--ink);
+  }
+  .title .in {
+    font-style: italic;
+  }
+
+  .subtitle {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.2;
+    margin-top: 28px;
+    color: var(--ink);
+  }
+  .subtitle-2 {
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.55;
+    max-width: 520px;
+    color: var(--ink-soft);
+  }
+
+  .right-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .vert-date {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: var(--serif);
+    font-size: clamp(64px, 8vw, 120px);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+    color: var(--ink);
+  }
+
+  .meta-block {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-end;
+    text-align: right;
+    margin-top: auto;
+  }
+  .meta-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .meta-row .k {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .meta-row .v {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+  .rsvp {
+    margin-top: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px 16px 28px;
+    background: var(--paper);
+    color: #2a1f17;
+    border: none;
+    border-radius: 999px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform .25s ease, background .25s ease;
+  }
+  .rsvp:hover {
+    transform: translateY(-2px);
+    background: #ffffff;
+  }
+  .rsvp .arrow {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #2a1f17;
+    color: var(--paper);
+    display: grid;
+    place-items: center;
+    font-size: 12px;
+    transition: transform .25s ease;
+  }
+  .rsvp:hover .arrow {
+    transform: translateX(3px);
+  }
+
+  /* ---------- intro section ---------- */
+  .intro {
+    padding: 140px 56px;
+    position: relative;
+    color: var(--ink);
+  }
+  .intro .micro { color: var(--ink-soft); }
+  .intro h2 { color: var(--ink); }
+  .intro p { color: var(--ink); }
+  .intro-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .intro .label-col {
+    position: sticky;
+    top: 80px;
+  }
+  .intro h2 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(36px, 4.5vw, 64px);
+    line-height: 1.05;
+    margin-top: 16px;
+  }
+  .intro p {
+    font-family: var(--serif);
+    font-size: clamp(22px, 2.4vw, 32px);
+    line-height: 1.35;
+    max-width: 720px;
+  }
+  .intro p + p {
+    margin-top: 24px;
+  }
+  .intro p em {
+    font-style: italic;
+  }
+
+  /* ---------- divider ---------- */
+  .section-head {
+    padding: 60px 56px 40px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    max-width: 1280px;
+    margin: 0 auto;
+    color: var(--ink);
+  }
+  .section-head .count { color: var(--ink-soft); }
+  .section-head h3 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(40px, 5vw, 72px);
+    line-height: 1;
+  }
+  .section-head .count {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  /* ---------- project cards ---------- */
+  .projects {
+    padding: 0 56px 120px;
+    color: var(--ink);
+  }
+  .project {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 80px 0;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 96px 1fr 1.1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .project:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+  .project .num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .project .text h4 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .project .text h4 em {
+    font-style: italic;
+  }
+  .project .text p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 480px;
+  }
+  .project .text .author {
+    margin-top: 20px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .project .images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .project.single .images {
+    grid-template-columns: 1fr;
+  }
+  .img-placeholder {
+    aspect-ratio: 4/5;
+    border: 1px solid var(--line);
+    background:
+      repeating-linear-gradient(135deg,
+        rgba(251,243,230,0.12) 0px,
+        rgba(251,243,230,0.12) 1px,
+        transparent 1px,
+        transparent 8px),
+      rgba(255,255,255,0.08);
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 16px;
+    backdrop-filter: blur(2px);
+  }
+  .img-placeholder span {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .project.wip .text h4 {
+    color: var(--ink-soft);
+  }
+  .wip-pill {
+    display: inline-block;
+    padding: 4px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- footer ---------- */
+  .footer {
+    padding: 80px 56px 60px;
+    border-top: 1px solid var(--line);
+    color: var(--ink);
+  }
+  .footer .meta { color: var(--ink-soft); }
+  .footer .meta a { border-bottom-color: var(--line) !important; }
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 40px;
+  }
+  .footer .big {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(56px, 9vw, 140px);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+  }
+  .footer .meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-align: right;
+    line-height: 1.8;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 900px) {
+    .topbar { padding: 20px 24px; }
+    .topbar .left { gap: 16px; }
+    .topbar .right { display: none; }
+
+    .wrap, .intro, .projects, .footer { padding-left: 24px; padding-right: 24px; }
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 24px 24px 60px;
+      gap: 40px;
+    }
+    .right-col { align-items: flex-start; }
+    .vert-date {
+      writing-mode: horizontal-tb;
+      transform: none;
+      font-size: 88px;
+    }
+    .meta-block { align-items: flex-start; text-align: left; }
+    .intro-grid { grid-template-columns: 1fr; gap: 24px; }
+    .intro .label-col { position: static; }
+    .section-head { padding: 40px 24px 20px; }
+    .project {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 48px 0;
+    }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer .meta { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<img class="bg" src="assets/background.jpg" alt="" aria-hidden="true" />
+
+<div style="position:relative; z-index:1">
+
+<!-- ---------- top bar ---------- -->
+<header class="topbar">
+  <div class="left">
+    <span class="mark"><em>with(in)</em></span>
+    <span class="micro" style="margin-left:12px;">— Spring 2026</span>
+  </div>
+  <div class="right">
+    <span class="micro"><span class="dot"></span>Carnegie Mellon · School of Design</span>
+  </div>
+</header>
+
+<!-- ---------- hero ---------- -->
+<section class="hero">
+  <div class="left-col">
+    <div class="lecturers">
+      <span class="label">Faculty</span>
+      Dina El-Zanfaly &amp; Marysol Ortega Pallanez
+      <span class="label" style="margin-top:14px;">Course</span>
+      51-361 / 861 — hyperSense:<br />Augmenting Human Experience
+      <div class="hero-arrow"></div>
+    </div>
+
+    <div class="title-block">
+      <span class="micro eyebrow">An invitation · A showcase</span>
+      <h1 class="title">with<span class="paren">(</span><span class="in">in</span><span class="paren">)</span></h1>
+      <p class="subtitle">Introspection &amp; collective reflection.</p>
+      <p class="subtitle-2">CMU 51-361/861 hyperSense: Augmenting Human Experience — Showcase, Spring 2026. A set of activities, conversations &amp; games that reflect on the nature of design process.</p>
+    </div>
+  </div>
+
+  <div class="right-col">
+    <div class="vert-date">11 / 30</div>
+
+    <div class="meta-block">
+      <div class="meta-row">
+        <span class="k">Date</span>
+        <span class="v">November 30, 2021</span>
+      </div>
+      <div class="meta-row">
+        <span class="k">Time</span>
+        <span class="v">11:00 AM — 12:30 PM</span>
+      </div>
+      <div class="meta-row">
+        <span class="k">Location</span>
+        <span class="v">School of Design, CMU</span>
+      </div>
+      <a class="rsvp" href="#" aria-label="RSVP">
+        RSVP here
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- intro ---------- -->
+<section class="intro">
+  <div class="intro-grid">
+    <div class="label-col">
+      <span class="micro">§ 01 — An invitation</span>
+      <h2>Inquiry,<br/>introspection,<br/>&amp; sharing.</h2>
+    </div>
+    <div class="prose-col">
+      <p><em>With(in)</em> is the culmination of the Seminar in Design Theory &amp; Practice — taught by Dina El-Zanfaly &amp; Marysol Ortega Pallanez for PhD and MDes students at Carnegie Mellon's School of Design.</p>
+      <p>We invite you to engage in a set of activities, conversations &amp; games that reflect on the nature of a design process rooted in inquiry, introspection &amp; sharing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- projects ---------- -->
+<div class="section-head">
+  <h3>Five projects.</h3>
+  <span class="count">§ 02 — On view</span>
+</div>
+
+<section class="projects">
+
+  <!-- Project 1 -->
+  <article class="project">
+    <div class="num">i.</div>
+    <div class="text">
+      <h4>Proximity <em>Garden</em></h4>
+      <p>Proximity Garden is an interactive floor projection system that fosters connection between strangers through playful, embodied interaction. Using real‑time body tracking, the system detects interpersonal proximity and responds — lotus flowers blooming around people's feet.</p>
+      <div class="author">— Sujin</div>
+    </div>
+    <div class="images">
+      <div class="img-placeholder"><span>Floor projection<br/>— stills</span></div>
+      <div class="img-placeholder"><span>Bloom detail<br/>— close‑up</span></div>
+    </div>
+  </article>
+
+  <!-- Project 2 -->
+  <article class="project">
+    <div class="num">ii.</div>
+    <div class="text">
+      <h4>It Takes Two to Make a <em>Squiggle Wiggle</em></h4>
+      <p>A tangible, AI‑assisted drawing experience that brings participants' sketches to life — supporting divergent thinking and social co‑creation in real time, while keeping the human as the dominant creative agent.</p>
+      <p style="font-size:14px; margin-top:12px; color:var(--ink-soft);">A human‑centered framing of AI‑assisted creativity, with implications for designing tangible co‑creative systems that preserve authorship and collaborative imagination.</p>
+      <div class="author">— Mary</div>
+    </div>
+    <div class="images">
+      <div class="img-placeholder"><span>Tangible interface<br/>— in use</span></div>
+      <div class="img-placeholder"><span>Co‑drawn output<br/>— sketch</span></div>
+    </div>
+  </article>
+
+  <!-- Project 3 -->
+  <article class="project wip">
+    <div class="num">iii.</div>
+    <div class="text">
+      <span class="wip-pill">Work in progress</span>
+      <h4><em>Untitled</em> — coming soon</h4>
+      <p>A new chapter, still in formation. Details &amp; imagery will arrive shortly before the showcase.</p>
+      <div class="author">— Erica</div>
+    </div>
+    <div class="images single">
+      <div class="img-placeholder"><span>Image to come</span></div>
+    </div>
+  </article>
+
+  <!-- Project 4 -->
+  <article class="project wip">
+    <div class="num">iv.</div>
+    <div class="text">
+      <span class="wip-pill">Work in progress</span>
+      <h4><em>Untitled</em> — coming soon</h4>
+      <p>A new chapter, still in formation. Details &amp; imagery will arrive shortly before the showcase.</p>
+      <div class="author">— Evan</div>
+    </div>
+    <div class="images single">
+      <div class="img-placeholder"><span>Image to come</span></div>
+    </div>
+  </article>
+
+  <!-- Project 5 -->
+  <article class="project wip">
+    <div class="num">v.</div>
+    <div class="text">
+      <span class="wip-pill">Work in progress</span>
+      <h4><em>Untitled</em> — coming soon</h4>
+      <p>A new chapter, still in formation. Details &amp; imagery will arrive shortly before the showcase.</p>
+      <div class="author">— James</div>
+    </div>
+    <div class="images single">
+      <div class="img-placeholder"><span>Image to come</span></div>
+    </div>
+  </article>
+
+</section>
+
+<!-- ---------- footer ---------- -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="big"><em>See you<br/>with(in).</em></div>
+    <div class="meta">
+      Carnegie Mellon University<br/>
+      School of Design<br/>
+      hyperSense · Spring 2026<br/>
+      <br/>
+      <a href="#" style="color:inherit; text-decoration:none; border-bottom:1px solid var(--line);">RSVP →</a>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /content wrapper -->
+
+</body>
+</html>
